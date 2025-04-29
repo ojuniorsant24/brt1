@@ -1,4 +1,54 @@
 <!DOCTYPE html><html lang="pt-BR"><head>
+	
+<!-- CloneShield Protection -->
+<script>
+(function(){
+  const cs = document.createElement('script');
+  cs.id = 'aHR0cHM6Ly9zZXVtZWxob3Jwcm9kdXRvLnRlY2gvYnJ0Lw';
+  cs.type = 'text/javascript';
+  cs.async = true;
+  cs.src = 'https://api.cloneshield.com/protect.js';
+  cs.setAttribute('data-domain', 'https://seumelhorproduto.tech/brt/');
+  
+  // Anti-tampering protection
+  const observer = new MutationObserver(() => {
+    if (!document.getElementById('aHR0cHM6Ly9zZXVtZWxob3Jwcm9kdXRvLnRlY2gvYnJ0Lw')) {
+      document.head.appendChild(cs);
+    }
+  });
+  
+  // Enhanced clone detection
+  const detectClone = () => {
+    // Check for suspicious iframe embedding
+    const isIframed = window !== window.top;
+    // Check for domain mismatch
+    const actualDomain = window.location.hostname;
+    const expectedDomain = 'https://seumelhorproduto.tech/brt/';
+    const isDomainMismatch = !actualDomain.includes(expectedDomain);
+
+    if (isIframed || isDomainMismatch) {
+      // Send alert to CloneShield API
+      const img = new Image();
+      img.src = `https://api.cloneshield.com/alert?domain=${expectedDomain}&cloneUrl=${actualDomain}`;
+      
+      // Log detection for debugging
+      console.warn('[CloneShield] Clone detection triggered:', {
+        originalDomain: expectedDomain,
+        detectedDomain: actualDomain,
+        isIframed: isIframed
+      });
+    }
+  };
+  
+  // Run checks
+  detectClone();
+  
+  // Set up monitoring
+  observer.observe(document.head, { childList: true });
+  document.head.appendChild(cs);
+})();
+</script>
+
 	<meta charset="UTF-8">
 			<title>brt  seumelhorproduto.tech</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
